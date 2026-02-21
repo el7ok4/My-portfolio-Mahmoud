@@ -307,3 +307,17 @@ body {
 .w-50 { width: 50%; }
 .w-40 { width: 40%; }
 .w-30 { width: 30%; }
+
+/* --- New Skill Descriptions --- */
+.skill-desc {
+    font-size: 0.85rem;
+    color: #555;
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+/* --- Additional Progress Bar Widths --- */
+.w-85 { width: 85%; }
+.w-80 { width: 80%; }
+.w-75 { width: 75%; }
+.w-60 { width: 60%; }
