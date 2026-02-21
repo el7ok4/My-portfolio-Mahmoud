@@ -1,4 +1,5 @@
 /* --- Global Styles & Reset --- */
+/* --- Global Styles & Reset --- */
 html {
     scroll-behavior: smooth;
     overflow-x: hidden; /* Prevents side-scrolling bugs */
@@ -12,7 +13,7 @@ html {
 }
 
 body {
-   background-color: #e6f2ff; /* A nice light blue. You can change this to 'blue' or '#2a6bb6' */
+   background-color: #e6f2ff; /* Light blue background */
     color: #333;
     overflow-x: hidden;
 }
@@ -45,7 +46,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 8%;
-    background-color: #fff;
+    background-color: transparent; /* Updated to let blue background show */
     border-bottom: 2px solid #2a6bb6;
     position: sticky;
     top: 0;
@@ -72,9 +73,33 @@ body {
     max-width: 1400px;
     margin: 0 auto;
 }
-.hero-content { flex: 1; max-width: 500px; }
-.hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-.hero-content p { font-size: 1.1rem; color: #555; line-height: 1.6; margin-bottom: 30px; }
+.hero-content { flex: 1; max-width: 550px; }
+
+/* New Hero Header Styles */
+.main-header {
+    font-size: 3rem; 
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+}
+.highlight {
+    color: #2a6bb6;
+    position: relative;
+    display: inline-block;
+}
+.highlight::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 8px;
+    background: rgba(42, 107, 182, 0.2);
+    bottom: 5px;
+    left: 0;
+    z-index: -1;
+}
+
+.hero-content p { font-size: 1.15rem; color: #444; line-height: 1.7; margin-bottom: 30px; max-width: 550px; }
 .social-icons a { color: #555; font-size: 2rem; margin-right: 15px; transition: 0.3s; text-decoration: none; }
 .social-icons a:hover { color: #2a6bb6; }
 .hero-image-container { flex: 1; display: flex; justify-content: flex-end; }
@@ -87,61 +112,82 @@ body {
 /* --- About Section --- */
 .about-section {
     display: flex;
-    gap: 60px; /* Increased gap slightly for better spacing */
-    padding: 100px 10%; /* Adjusted padding for better vertical space */
+    gap: 60px; 
+    padding: 100px 10%; 
     max-width: 1400px;
     margin: 0 auto;
     align-items: center;
 }
 
-/* This is the container for your image */
 .about-image {
-    flex: 1 1 45%; /* Lets it grow/shrink, but starts at 45% width */
-    max-width: 550px; /* Ensures it never gets wider than 550px */
+    flex: 1 1 45%; 
+    max-width: 550px; 
 }
-
-/* This makes the actual image responsive inside its container */
 .about-image img {
     width: 100%;
-    height: auto; /* Maintains the correct aspect ratio */
-    border-radius: 20px; /* Slightly rounder corners */
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1); /* Softer shadow */
+    height: auto; 
+    border-radius: 20px; 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1); 
 }
 
-/* This is the container for your text */
-.about-content {
-    flex: 1 1 50%; /* Lets it grow/shrink, takes up remaining space */
-}
-
+.about-content { flex: 1 1 50%; }
 .about-content .section-subtitle { text-align: left; }
 .about-content p { color: #555; line-height: 1.8; margin-bottom: 20px; font-size: 1.05rem; }
-/* --- Portfolio Section (Hover Enhancement) --- */
-.portfolio-section { padding: 80px 10%; background: #fff; }
+
+/* --- Portfolio Section --- */
+.portfolio-section { padding: 80px 10%; background: transparent; }
 .portfolio-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px; margin-top: 40px;
 }
 .portfolio-item {
-    position: relative; border-radius: 15px; overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     cursor: pointer;
 }
-.portfolio-item img {
-    width: 100%; display: block; transition: transform 0.4s ease;
+
+/* New Image Container Styles */
+.portfolio-img-container {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    border-bottom: 3px solid #2a6bb6;
 }
-.portfolio-info {
-    position: absolute; bottom: -100%; left: 0; width: 100%;
-    background: rgba(42, 107, 182, 0.95); /* Blue Overlay */
-    color: #fff; padding: 25px; transition: bottom 0.4s ease;
+.portfolio-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
 }
-.portfolio-info h3 { margin-bottom: 10px; font-size: 1.4rem; }
-.portfolio-info p { font-size: 0.95rem; line-height: 1.5; }
-/* Hover Trigger */
-.portfolio-item:hover img { transform: scale(1.05); }
-.portfolio-item:hover .portfolio-info { bottom: 0; }
+
+/* Icon Placeholder (If an image is missing) */
+.portfolio-image-placeholder {
+    height: 220px;
+    background: #f0f4f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: #2a6bb6;
+    border-bottom: 3px solid #2a6bb6;
+}
+
+/* Updated Info Layout */
+.portfolio-info { padding: 25px; }
+.portfolio-info h3 { margin-bottom: 10px; font-size: 1.4rem; color: #222; }
+.portfolio-info p { font-size: 0.95rem; line-height: 1.5; color: #555; }
+
+/* Hover Effects Combined */
+.portfolio-item:hover { transform: translateY(-10px); }
+.portfolio-item:hover .portfolio-img-container img { transform: scale(1.1); }
+
 
 /* --- Services Section --- */
-.services-section { padding: 80px 10%; }
+.services-section { padding: 80px 10%; background: transparent;}
 .services-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 30px; margin-top: 40px;
@@ -155,7 +201,7 @@ body {
 .service-card p { color: #555; line-height: 1.6; }
 
 /* --- Skills Section (Normal Way) --- */
-.skills-section { padding: 80px 10%; background: #fff; }
+.skills-section { padding: 80px 10%; background: transparent; }
 .skills-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 50px;
 }
@@ -188,7 +234,7 @@ body {
     background: #2a6bb6; color: #fff; padding: 5px 15px;
     border-radius: 20px; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-bottom: 15px;
 }
-.experience-card h3 { font-size: 1.6rem; margin-bottom: 5px; }
+.experience-card h3 { font-size: 1.6rem; margin-bottom: 5px; color: #222; }
 .company-link { color: #2a6bb6; text-decoration: none; font-size: 1rem; display: inline-block; margin-bottom: 20px; }
 .experience-card p { color: #555; margin-bottom: 15px; line-height: 1.6;}
 .experience-card ul { margin-left: 20px; color: #444; margin-bottom: 20px; line-height: 1.8;}
@@ -197,7 +243,7 @@ body {
 .courses-grid .experience-card { margin: 0; }
 
 /* --- Contact Section --- */
-.contact-section { padding: 80px 10%; background: #fff; }
+.contact-section { padding: 80px 10%; background: transparent; }
 .contact-buttons { display: flex; justify-content: center; gap: 20px; margin-top: 40px; }
 .btn {
     display: flex; align-items: center; text-decoration: none;
@@ -233,35 +279,14 @@ body {
     .footer-content { flex-direction: column; gap: 40px; text-align: center; }
     .footer-links { justify-content: center; flex-wrap: wrap; }
 }
-/* --- Linter Fix Utilities (replaces inline HTML styles) --- */
 
-/* Icons & Logos */
-.header-shield-icon {
-    color: #2a6bb6;
-    font-size: 1.8rem;
-}
-
-.footer-shield-icon {
-    color: #2a6bb6;
-    font-size: 1.5rem;
-}
-
-.footer-brand-margin {
-    margin-bottom: 15px;
-}
-
-.text-white {
-    color: #ffffff;
-}
-
-/* Margins */
-.mt-20 {
-    margin-top: 20px !important;
-}
-
-.mt-60 {
-    margin-top: 60px !important;
-}
+/* --- Linter Fix Utilities --- */
+.header-shield-icon { color: #2a6bb6; font-size: 1.8rem; }
+.footer-shield-icon { color: #2a6bb6; font-size: 1.5rem; }
+.footer-brand-margin { margin-bottom: 15px; }
+.text-white { color: #ffffff; }
+.mt-20 { margin-top: 20px !important; }
+.mt-60 { margin-top: 60px !important; }
 
 /* Progress Bar Widths */
 .w-90 { width: 90%; }
